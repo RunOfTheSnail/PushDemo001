@@ -180,7 +180,13 @@ class ViewController: UIViewController {
             content.userInfo = ["name":"张三","age":"20"]
             content.categoryIdentifier = "saySomethingCategory"
             // 2、创建发送触发
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+            
+            /* 触发器分三种：
+             UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
+             UNCalendarNotificationTrigger: 在某天某时触发，可重复
+             UNLocationNotificationTrigger : 进入或离开某个地理区域时触发 */
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
             // 3. 发送请求标识符
             let requestIdentifier = "music"
             // 添加图片
